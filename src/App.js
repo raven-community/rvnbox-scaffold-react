@@ -28,7 +28,7 @@ let rootSeed = RVNBOX.Mnemonic.toSeed(mnemonic);
 let masterHDNode = RVNBOX.HDNode.fromSeed(rootSeed, "ravencoin");
 
 // HDNode of BIP44 account
-let account = RVNBOX.HDNode.derivePath(masterHDNode, "m/0'/175'/0'");
+let account = RVNBOX.HDNode.derivePath(masterHDNode, "m/44'/175'/0'");
 
 // derive the first external change address HDNode which is going to spend utxo
 let change = RVNBOX.HDNode.derivePath(account, "0/0");
@@ -56,8 +56,8 @@ class App extends Component {
 
         // instance of transaction builder
         let transactionBuilder = new RVNBOX.TransactionBuilder("ravencoin");
-        // original amount of corbes in vin
-        let originalAmount = result[0].corbes;
+        // original amount of satoshis in vin
+        let originalAmount = result[0].satoshis;
 
         // index of vout
         let vout = result[0].vout;
@@ -68,13 +68,13 @@ class App extends Component {
         // add input with txid and index of vout
         transactionBuilder.addInput(txid, vout);
 
-        // get byte count to calculate fee. paying 1 corbe/byte
+        // get byte count to calculate fee. paying 1 satoshi/byte
         let byteCount = RVNBOX.RavenCoin.getByteCount(
           { P2PKH: 1 },
           { P2PKH: 1 }
         );
         // 192
-        // amount to send to receiver. It's the original amount - 1 corbe/byte for tx size
+        // amount to send to receiver. It's the original amount - 1 satoshi/byte for tx size
         let sendAmount = originalAmount - byteCount;
 
         // add output w/ address and amount to send
@@ -122,10 +122,10 @@ class App extends Component {
   render() {
     let addresses = [];
     for (let i = 0; i < 10; i++) {
-      let account = masterHDNode.derivePath(`m/0'/175'/0'/0/${i}`);
+      let account = masterHDNode.derivePath(`m/44'/175'/0'/0/${i}`);
       addresses.push(
         <li key={i}>
-          m/0&rsquo;/175&rsquo;/0&rsquo;/0/
+          m/44&rsquo;/175&rsquo;/0&rsquo;/0/
           {i}: {RVNBOX.HDNode.toLegacyAddress(account)}
         </li>
       );
@@ -141,7 +141,7 @@ class App extends Component {
           <h3>256 bit {lang} BIP39 Mnemonic:</h3> <p>{this.state.mnemonic}</p>
           <h3>BIP44 Account</h3>
           <p>
-            <code>"m/0'/175'/0'"</code>
+            <code>"m/44'/175'/0'"</code>
           </p>
           <h3>BIP44 external change addresses</h3>
           <ul>{addresses}</ul>
