@@ -11,7 +11,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
-    "sass-loader": "^7.0.1"
+    "sass-loader": "^7.0.1",
+    "url-loader": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
