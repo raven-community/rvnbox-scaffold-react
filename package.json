@@ -3,7 +3,7 @@
   "license": "MIT",
   "description": "Basic react app w/ RVNBOX bindings",
   "author": "MSFTserver",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "mocha": "^5.2.0",
@@ -22,7 +22,7 @@
     "coverage:report": "nyc --reporter=html mocha --require babel-core/register --timeout 5000"
   },
   "devDependencies": {
-    "rvnbox-sdk": "github:raven-community/rvnbox-javascript-sdk#master",
+    "rvnbox-sdk": "^1.0.2",
     "coveralls": "^3.0.2",
     "eslint": "^5.5.0",
     "eslint-config-prettier": "^3.0.1",
