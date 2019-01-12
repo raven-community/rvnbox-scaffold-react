@@ -22,7 +22,7 @@
     "coverage:report": "nyc --reporter=html mocha --require babel-core/register --timeout 5000"
   },
   "devDependencies": {
-    "rvnbox-sdk": "^1.0.3",
+    "rvnbox-sdk": "^1.0.4",
     "coveralls": "^3.0.2",
     "eslint": "^5.5.0",
     "eslint-config-prettier": "^3.0.1",
